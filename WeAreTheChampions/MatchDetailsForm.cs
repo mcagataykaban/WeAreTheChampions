@@ -104,8 +104,8 @@ namespace WeAreTheChampions
                 var mac = db.Matches.ToList().Find(x => x.Id == selectedIdMainForm);
                 string mactext =mac.Id + " - " + mac.Team1.TeamName + "-" + mac.Team2.TeamName + " || " + mac.MatchTime?.ToShortDateString();
                 cboMatches.SelectedItem = mactext;
-                isEditIdShow = false;
-           
+                isEditIdShow = false;//değişti
+
             }
             
             if (cboMatches.SelectedIndex == -1)
@@ -134,7 +134,7 @@ namespace WeAreTheChampions
         {
             var matches = MatchListCreate();
             Match selectedMatch = matches.Find(x =>
-                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "
+                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "//değişti
                             + x.MatchTime?.ToShortDateString() == (string)cboMatches.SelectedItem);
             return selectedMatch;
         }
@@ -160,7 +160,7 @@ namespace WeAreTheChampions
             db.SaveChanges();
             WhenMakeChange(EventArgs.Empty);
             MessageBox.Show("All changes has been saved.");
-            if (selectedIdMainForm > 0)
+            if (selectedIdMainForm > 0)//değişti
             {
                 Close();
             }
