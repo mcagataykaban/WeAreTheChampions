@@ -117,5 +117,11 @@ namespace WeAreTheChampions
             ResultControl();
             ListMatches();
         }
+
+        private void tsmiPlayers_Click(object sender, EventArgs e)
+        {
+            var frmPlayersForm = new PlayersForm(db);
+            frmPlayersForm.ShowDialog();
+        }
     }
 }

@@ -59,6 +59,8 @@ namespace WeAreTheChampions
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lstTeams.SelectedIndex < 0)
+                return;
             var selectedTeam = (Team)lstTeams.SelectedItem;
             db.Teams.Remove(selectedTeam);
             db.SaveChanges();
@@ -68,6 +70,8 @@ namespace WeAreTheChampions
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (lstTeams.SelectedIndex < 0)
+                return;
             //Düzenleme Moduna Geç
             lstTeams.Enabled = false;
             var selectedTeam = (Team)lstTeams.SelectedItem;

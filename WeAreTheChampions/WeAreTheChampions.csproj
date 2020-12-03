@@ -83,6 +83,12 @@
     <Compile Include="Model\Result.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Model\WeAreTheChampionsContext.cs" />
+    <Compile Include="PlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayersForm.Designer.cs">
+      <DependentUpon>PlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamsForm.cs">
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012022025431_teams-seed.resx">
       <DependentUpon>202012022025431_teams-seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayersForm.resx">
+      <DependentUpon>PlayersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
