@@ -18,23 +18,55 @@ namespace WeAreTheChampions
         public Form1()
         {
             InitializeComponent();
+            ResultControl();
             ListMatches();
+        }
+
+        private void ResultControl()
+        {
+            var matches = db.Matches.ToList();
+            foreach (var item in matches)
+            {
+                if (item.Score2 > item.Score1)
+                    item.Result = Result.Team2;
+                else if (item.Score1 > item.Score2)
+                    item.Result = Result.Team1;
+                else if(item.Score1 == item.Score2 && DateTime.Now > item.MatchTime)
+                    item.Result = Result.Draw;
+                else
+                    item.Result = null;
+                db.SaveChanges();
+            }
         }
 
         private void ListMatches()
         {
-            dgvMatches.DataSource = db.Matches.ToList().OrderByDescending(x => x.MatchTime).ToList()
+            IEnumerable<dynamic> maclar = Anonim<dynamic>();
+            var matches = maclar.ToList();
+            if (chkHideCompleted.Checked == true)
+            {
+                matches = maclar.Where(x => x.Result == null)
+                .ToList();
+            }
+
+            dgvMatches.DataSource = matches;
+        }
+
+        private IEnumerable<T> Anonim<T>()
+        {
+            var matches = db.Matches.ToList().OrderByDescending(x => x.MatchTime).ToList()
                 .Select(
                 x => new
                 {
                     MatchNo = x.Id,
                     HomeTeam = x.Team1.TeamName,
                     AwayTeam = x.Team2.TeamName,
-                    Tarih =  x.MatchTime?.ToShortDateString(),
-                    Saat =  x.MatchTime?.ToShortTimeString(),
-                    Score = x.Score1 + "-" + x.Score2
-                })
-                .ToList();
+                    Tarih = x.MatchTime?.ToShortDateString(),
+                    Saat = x.MatchTime?.ToShortTimeString(),
+                    Score = x.Score1 + "-" + x.Score2,
+                    Result = x.Result
+                });
+            return (IEnumerable<T>)matches;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -47,6 +79,7 @@ namespace WeAreTheChampions
 
         private void FrmAddMatchForm_HasBeenChanged(object sender, EventArgs e)
         {
+            ResultControl();
             ListMatches();
         }
 
@@ -65,6 +98,11 @@ namespace WeAreTheChampions
             var frmAddMatchForm = new MatchDetailsForm(db,selectedIdMainForm);
             frmAddMatchForm.HasBeenChanged += FrmAddMatchForm_HasBeenChanged;
             frmAddMatchForm.ShowDialog();
+        }
+
+        private void chkHideCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            ListMatches();
         }
     }
 }

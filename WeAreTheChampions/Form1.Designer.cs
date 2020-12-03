@@ -42,6 +42,7 @@ namespace WeAreTheChampions
             this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkHideCompleted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,13 +54,13 @@ namespace WeAreTheChampions
             this.dgvMatches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMatches.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMatches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMatches.Location = new System.Drawing.Point(13, 63);
+            this.dgvMatches.Location = new System.Drawing.Point(13, 53);
             this.dgvMatches.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMatches.Name = "dgvMatches";
             this.dgvMatches.ReadOnly = true;
             this.dgvMatches.RowHeadersVisible = false;
             this.dgvMatches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMatches.Size = new System.Drawing.Size(733, 306);
+            this.dgvMatches.Size = new System.Drawing.Size(733, 316);
             this.dgvMatches.TabIndex = 0;
             // 
             // label1
@@ -76,7 +77,7 @@ namespace WeAreTheChampions
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(520, 25);
+            this.btnAdd.Location = new System.Drawing.Point(520, 376);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(226, 31);
             this.btnAdd.TabIndex = 2;
@@ -88,7 +89,7 @@ namespace WeAreTheChampions
             // 
             this.btnEdit.Location = new System.Drawing.Point(13, 376);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(226, 31);
+            this.btnEdit.Size = new System.Drawing.Size(100, 31);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit 🖊️";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -96,9 +97,9 @@ namespace WeAreTheChampions
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(521, 376);
+            this.btnDelete.Location = new System.Drawing.Point(119, 376);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(226, 31);
+            this.btnDelete.Size = new System.Drawing.Size(100, 31);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete 🗑️";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -134,11 +135,23 @@ namespace WeAreTheChampions
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.playersToolStripMenuItem.Text = "Players";
             // 
+            // chkHideCompleted
+            // 
+            this.chkHideCompleted.AutoSize = true;
+            this.chkHideCompleted.Location = new System.Drawing.Point(552, 28);
+            this.chkHideCompleted.Name = "chkHideCompleted";
+            this.chkHideCompleted.Size = new System.Drawing.Size(194, 22);
+            this.chkHideCompleted.TabIndex = 6;
+            this.chkHideCompleted.Text = "Hide Completed Matches";
+            this.chkHideCompleted.UseVisualStyleBackColor = true;
+            this.chkHideCompleted.CheckedChanged += new System.EventHandler(this.chkHideCompleted_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 424);
+            this.Controls.Add(this.chkHideCompleted);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -169,6 +182,7 @@ namespace WeAreTheChampions
         private System.Windows.Forms.ToolStripMenuItem teamsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkHideCompleted;
     }
 }
 
