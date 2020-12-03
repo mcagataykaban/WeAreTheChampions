@@ -51,7 +51,7 @@ namespace WeAreTheChampions
 
             dgvMatches.DataSource = matches;
         }
-
+        //https://stackoverflow.com/questions/10073319/returning-anonymous-type-in-c-sharp
         private IEnumerable<T> Anonim<T>()
         {
             var matches = db.Matches.ToList().OrderByDescending(x => x.MatchTime).ToList()
@@ -102,6 +102,19 @@ namespace WeAreTheChampions
 
         private void chkHideCompleted_CheckedChanged(object sender, EventArgs e)
         {
+            ListMatches();
+        }
+
+        private void tsmiTeams_Click(object sender, EventArgs e)
+        {
+            var frmTeamsForm = new TeamsForm(db);
+            frmTeamsForm.HasBeenChanged += FrmTeamsForm_HasBeenChanged;
+            frmTeamsForm.ShowDialog();
+        }
+
+        private void FrmTeamsForm_HasBeenChanged(object sender, EventArgs e)
+        {
+            ResultControl();
             ListMatches();
         }
     }

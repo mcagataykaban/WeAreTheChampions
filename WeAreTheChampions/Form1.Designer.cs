@@ -39,9 +39,9 @@ namespace WeAreTheChampions
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTeams = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColors = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPlayers = new System.Windows.Forms.ToolStripMenuItem();
             this.chkHideCompleted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -91,7 +91,7 @@ namespace WeAreTheChampions
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 31);
             this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit 🖊️";
+            this.btnEdit.Text = "🖊️ Edit ";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -101,39 +101,40 @@ namespace WeAreTheChampions
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 31);
             this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete 🗑️";
+            this.btnDelete.Text = "🗑️ Delete ";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.teamsToolStripMenuItem,
-            this.colorsToolStripMenuItem,
-            this.playersToolStripMenuItem});
+            this.tsmiTeams,
+            this.tsmiColors,
+            this.tsmiPlayers});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(759, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // teamsToolStripMenuItem
+            // tsmiTeams
             // 
-            this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.teamsToolStripMenuItem.Text = "Teams";
+            this.tsmiTeams.Name = "tsmiTeams";
+            this.tsmiTeams.Size = new System.Drawing.Size(52, 20);
+            this.tsmiTeams.Text = "Teams";
+            this.tsmiTeams.Click += new System.EventHandler(this.tsmiTeams_Click);
             // 
-            // colorsToolStripMenuItem
+            // tsmiColors
             // 
-            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.colorsToolStripMenuItem.Text = "Colors";
+            this.tsmiColors.Name = "tsmiColors";
+            this.tsmiColors.Size = new System.Drawing.Size(53, 20);
+            this.tsmiColors.Text = "Colors";
             // 
-            // playersToolStripMenuItem
+            // tsmiPlayers
             // 
-            this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
-            this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.playersToolStripMenuItem.Text = "Players";
+            this.tsmiPlayers.Name = "tsmiPlayers";
+            this.tsmiPlayers.Size = new System.Drawing.Size(56, 20);
+            this.tsmiPlayers.Text = "Players";
             // 
             // chkHideCompleted
             // 
@@ -179,9 +180,9 @@ namespace WeAreTheChampions
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem teamsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTeams;
+        private System.Windows.Forms.ToolStripMenuItem tsmiColors;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPlayers;
         private System.Windows.Forms.CheckBox chkHideCompleted;
     }
 }
