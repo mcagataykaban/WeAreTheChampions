@@ -62,6 +62,17 @@ namespace WeAreTheChampions
             if (lstTeams.SelectedIndex < 0)
                 return;
             var selectedTeam = (Team)lstTeams.SelectedItem;
+            if (selectedTeam.Players != null || selectedTeam.Team1Matches != null || selectedTeam.Team2Matches != null)
+            {
+                MessageBox.Show(selectedTeam.Team1Matches.Count.ToString());
+                selectedTeam.TeamName = selectedTeam.TeamName + "(Closed)"; 
+                var players = selectedTeam.Players.ToList();
+                players.ForEach(x => x.TeamId =null);
+                db.SaveChanges();
+                WhenMakeChange(EventArgs.Empty);
+                ListTeams();
+                return;
+            }
             db.Teams.Remove(selectedTeam);
             db.SaveChanges();
             WhenMakeChange(EventArgs.Empty);
