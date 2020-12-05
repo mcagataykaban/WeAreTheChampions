@@ -38,6 +38,11 @@ namespace WeAreTheChampions
             {
                 var selectedColor = (Model.Color)lstColors.SelectedItem;
                 selectedColor.ColorName = txtColorName.Text;
+                if (db.Colors.Any(x => x.ColorName == selectedColor.ColorName))
+                {
+                    MessageBox.Show("Please enter different color name.");
+                    return;
+                }
                 selectedColor.Red = Convert.ToByte(lblRed.Text);
                 selectedColor.Green = Convert.ToByte(lblGreen.Text);
                 selectedColor.Blue = Convert.ToByte(lblBlue.Text);
@@ -72,11 +77,11 @@ namespace WeAreTheChampions
             btnAdd.Text = "➕ Add ";
             txtColorName.Clear();
             lblBlue.Text = lblRed.Text = lblGreen.Text = "000";
-            lblColor.BackColor = System.Drawing.Color.Transparent;
+            lblColor.BackColor = System.Drawing.Color.Black;
             hsBlue.Value = hsRed.Value = hsGreen.Value = hsBlue.Minimum;
         }
 
-        #region Scroll Event
+        #region Scroll Events
         private void hsRed_Scroll(object sender, ScrollEventArgs e)
         {
             lblRed.Text = hsRed.Value.ToString();

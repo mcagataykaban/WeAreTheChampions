@@ -84,18 +84,18 @@ namespace WeAreTheChampions
             this.lstColors.DisplayMember = "ColorName";
             this.lstColors.FormattingEnabled = true;
             this.lstColors.ItemHeight = 18;
-            this.lstColors.Location = new System.Drawing.Point(17, 259);
+            this.lstColors.Location = new System.Drawing.Point(17, 277);
             this.lstColors.Name = "lstColors";
-            this.lstColors.Size = new System.Drawing.Size(390, 184);
+            this.lstColors.Size = new System.Drawing.Size(401, 166);
             this.lstColors.TabIndex = 9;
             this.lstColors.SelectedIndexChanged += new System.EventHandler(this.lstColors_SelectedIndexChanged);
             // 
             // lblPreview
             // 
             this.lblPreview.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblPreview.Location = new System.Drawing.Point(407, 259);
+            this.lblPreview.Location = new System.Drawing.Point(17, 256);
             this.lblPreview.Name = "lblPreview";
-            this.lblPreview.Size = new System.Drawing.Size(11, 184);
+            this.lblPreview.Size = new System.Drawing.Size(401, 11);
             this.lblPreview.TabIndex = 10;
             // 
             // btnAdd
@@ -130,6 +130,7 @@ namespace WeAreTheChampions
             // 
             // lblColor
             // 
+            this.lblColor.BackColor = System.Drawing.Color.Black;
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblColor.Location = new System.Drawing.Point(17, 97);

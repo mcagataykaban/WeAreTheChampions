@@ -21,30 +21,16 @@ namespace WeAreTheChampions
             this.db = db;
             InitializeComponent();
             ListTeams();
+            ListColors();
+            cboFirstColor.SelectedIndex = cboSecondColor.SelectedIndex = -1;
             
         }
 
-        //private void TeamColorShow()
-        //{
-            
-        //    var team = (Team)lstTeams.SelectedItem;
-        //    List<Model.Color> renkler = team.TeamColors.ToList();
-        //    if (renkler.Count == 0)
-        //    {
-        //        lblBg.BackColor = System.Drawing.Color.Transparent;
-        //        lblBg2.BackColor = System.Drawing.Color.Transparent;
-        //    }
-        //    else if (renkler.Count == 1)
-        //    {
-        //        lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-        //        lblBg2.BackColor = System.Drawing.Color.Transparent;
-        //    }
-        //    else
-        //    {
-        //        lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-        //        lblBg2.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
-        //    }
-        //}
+        private void ListColors()
+        {
+            cboFirstColor.DataSource = db.Colors.ToList();
+            cboSecondColor.DataSource = db.Colors.ToList();
+        }
 
         protected virtual void WhenMakeChange(EventArgs args)
         {
@@ -58,47 +44,33 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //var color1 = CreateColor(lblColorFirst);
-            //var color2 = CreateColor(lblColorSecond);
+            List<Model.Color> colors = new List<Model.Color>();
+            colors.Add((Model.Color)cboFirstColor.SelectedItem);
+            colors.Add((Model.Color)cboSecondColor.SelectedItem);
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
-                //List<Model.Color> colorEdit = new List<Model.Color>();
-                //colorEdit.Add(color1);
-                //colorEdit.Add(color2);
-                //selectedTeam.TeamColors = colorEdit;
+               
                 selectedTeam.TeamName = txtTeamName.Text;
+                selectedTeam.TeamColors = colors;
                 db.SaveChanges();
                 ListTeams();
                 ResetForm();
                 WhenMakeChange(EventArgs.Empty);
                 return;
             }
-            //List<Model.Color> colors = new List<Model.Color>();
-            //colors.Add(color1);
-            //colors.Add(color2);
-            db.Teams.Add(new Team() { TeamName = txtTeamName.Text});
+            db.Teams.Add(new Team() { TeamName = txtTeamName.Text, TeamColors = colors});
             db.SaveChanges();
             ListTeams();
             ResetForm();
             WhenMakeChange(EventArgs.Empty);
         }
 
-        //private Model.Color CreateColor(Label lbl)
-        //{
-        //    System.Drawing.Color firstLblColor = lbl.BackColor;
-        //    byte r = firstLblColor.R;
-        //    byte g = firstLblColor.G;
-        //    byte b = firstLblColor.B;
-        //    var renk = new Model.Color() { Red = r, Green = g, Blue = b };
-        //    return renk;
-        //}
-
+    
         private void ResetForm()
         {
             txtTeamName.Clear();
-            //lblColorFirst.BackColor = System.Drawing.Color.Transparent;
-            //lblColorSecond.BackColor = System.Drawing.Color.Transparent;
+
             lstTeams.Enabled = true;
             btnAdd.Text = "➕ Add";
         }
@@ -136,24 +108,56 @@ namespace WeAreTheChampions
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (lstTeams.SelectedIndex < 0) return;
-            //Edit Mode Activated
+
             lstTeams.Enabled = false;
             var selectedTeam = (Team)lstTeams.SelectedItem;
-            //List<Model.Color> colors = selectedTeam.TeamColors.ToList();
-            //lblColorFirst.BackColor = System.Drawing.Color.FromArgb(colors[0].Red, colors[0].Green, colors[0].Blue);
-            //lblColorSecond.BackColor = System.Drawing.Color.FromArgb(colors[1].Red, colors[1].Green, colors[1].Blue);
+           
             btnAdd.Text = "💾 Save";
             txtTeamName.Text = selectedTeam.TeamName;
             
         }
 
-            //if (colorDialogFirst.ShowDialog() == DialogResult.OK)
-            //    lblColorFirst.BackColor = colorDialogFirst.Color;
-       
+        private void cboFirstColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFirstColor.SelectedIndex == -1)
+            {
+                lblFirstColor.BackColor = System.Drawing.Color.Transparent;
+                return;
+            }
+            var selectedColor = (Model.Color)cboFirstColor.SelectedItem;
+            lblFirstColor.BackColor = System.Drawing.Color.FromArgb(selectedColor.Red, selectedColor.Green, selectedColor.Blue);
+        }
 
+        private void cboSecondColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSecondColor.SelectedIndex == -1)
+            {
+                lblSecondColor.BackColor = System.Drawing.Color.Transparent;
+                return;
+            }
+            var selectedColor = (Model.Color)cboSecondColor.SelectedItem;
+            lblSecondColor.BackColor = System.Drawing.Color.FromArgb(selectedColor.Red, selectedColor.Green, selectedColor.Blue);
+        }
 
-    
-
-
+        private void lstTeams_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var team = (Team)lstTeams.SelectedItem;
+            List<Model.Color> renkler = team.TeamColors.ToList();
+            if (renkler.Count == 0)
+            {
+                lblBg.BackColor = System.Drawing.Color.Transparent;
+                lblBg2.BackColor = System.Drawing.Color.Transparent;
+            }
+            else if (renkler.Count == 1)
+            {
+                lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+                lblBg2.BackColor = System.Drawing.Color.Transparent;
+            }
+            else
+            {
+                lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+                lblBg2.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
+            }
+        }
     }
 }

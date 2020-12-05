@@ -41,6 +41,12 @@ namespace WeAreTheChampions
             this.colorDialogSecond = new System.Windows.Forms.ColorDialog();
             this.lblBg = new System.Windows.Forms.Label();
             this.lblBg2 = new System.Windows.Forms.Label();
+            this.cboFirstColor = new System.Windows.Forms.ComboBox();
+            this.cboSecondColor = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblFirstColor = new System.Windows.Forms.Label();
+            this.lblSecondColor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstTeams
@@ -53,6 +59,7 @@ namespace WeAreTheChampions
             this.lstTeams.Name = "lstTeams";
             this.lstTeams.Size = new System.Drawing.Size(401, 256);
             this.lstTeams.TabIndex = 0;
+            this.lstTeams.SelectedIndexChanged += new System.EventHandler(this.lstTeams_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -68,7 +75,7 @@ namespace WeAreTheChampions
             // 
             // txtTeamName
             // 
-            this.txtTeamName.Location = new System.Drawing.Point(18, 82);
+            this.txtTeamName.Location = new System.Drawing.Point(19, 82);
             this.txtTeamName.Name = "txtTeamName";
             this.txtTeamName.Size = new System.Drawing.Size(151, 24);
             this.txtTeamName.TabIndex = 3;
@@ -152,12 +159,74 @@ namespace WeAreTheChampions
             this.lblBg2.Size = new System.Drawing.Size(432, 14);
             this.lblBg2.TabIndex = 14;
             // 
+            // cboFirstColor
+            // 
+            this.cboFirstColor.DisplayMember = "ColorName";
+            this.cboFirstColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFirstColor.FormattingEnabled = true;
+            this.cboFirstColor.Location = new System.Drawing.Point(279, 48);
+            this.cboFirstColor.Name = "cboFirstColor";
+            this.cboFirstColor.Size = new System.Drawing.Size(110, 26);
+            this.cboFirstColor.TabIndex = 15;
+            this.cboFirstColor.SelectedIndexChanged += new System.EventHandler(this.cboFirstColor_SelectedIndexChanged);
+            // 
+            // cboSecondColor
+            // 
+            this.cboSecondColor.DisplayMember = "ColorName";
+            this.cboSecondColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSecondColor.FormattingEnabled = true;
+            this.cboSecondColor.Location = new System.Drawing.Point(279, 80);
+            this.cboSecondColor.Name = "cboSecondColor";
+            this.cboSecondColor.Size = new System.Drawing.Size(110, 26);
+            this.cboSecondColor.TabIndex = 16;
+            this.cboSecondColor.SelectedIndexChanged += new System.EventHandler(this.cboSecondColor_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "First color";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(178, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 18);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Second color";
+            // 
+            // lblFirstColor
+            // 
+            this.lblFirstColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFirstColor.Location = new System.Drawing.Point(395, 48);
+            this.lblFirstColor.Name = "lblFirstColor";
+            this.lblFirstColor.Size = new System.Drawing.Size(25, 26);
+            this.lblFirstColor.TabIndex = 19;
+            // 
+            // lblSecondColor
+            // 
+            this.lblSecondColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSecondColor.Location = new System.Drawing.Point(394, 80);
+            this.lblSecondColor.Name = "lblSecondColor";
+            this.lblSecondColor.Size = new System.Drawing.Size(25, 26);
+            this.lblSecondColor.TabIndex = 20;
+            // 
             // TeamsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(432, 487);
+            this.Controls.Add(this.lblSecondColor);
+            this.Controls.Add(this.lblFirstColor);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboSecondColor);
+            this.Controls.Add(this.cboFirstColor);
             this.Controls.Add(this.lblBg2);
             this.Controls.Add(this.lblBg);
             this.Controls.Add(this.btnListPlayers);
@@ -191,5 +260,11 @@ namespace WeAreTheChampions
         private System.Windows.Forms.ColorDialog colorDialogSecond;
         private System.Windows.Forms.Label lblBg;
         private System.Windows.Forms.Label lblBg2;
+        private System.Windows.Forms.ComboBox cboFirstColor;
+        private System.Windows.Forms.ComboBox cboSecondColor;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblFirstColor;
+        private System.Windows.Forms.Label lblSecondColor;
     }
 }
