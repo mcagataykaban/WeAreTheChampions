@@ -92,42 +92,50 @@ namespace WeAreTheChampions
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.DarkRed;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDelete.Location = new System.Drawing.Point(320, 446);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 31);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "🗑️ Delete ";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
+            this.btnEdit.BackColor = System.Drawing.Color.DarkKhaki;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEdit.Location = new System.Drawing.Point(18, 446);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 31);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "🖊️ Edit ";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAdd.Location = new System.Drawing.Point(19, 112);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(402, 31);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "➕ Add ";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnListPlayers
             // 
+            this.btnListPlayers.BackColor = System.Drawing.Color.DarkKhaki;
+            this.btnListPlayers.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnListPlayers.Location = new System.Drawing.Point(19, 145);
             this.btnListPlayers.Name = "btnListPlayers";
             this.btnListPlayers.Size = new System.Drawing.Size(401, 31);
             this.btnListPlayers.TabIndex = 10;
             this.btnListPlayers.Text = "📜 List Players";
-            this.btnListPlayers.UseVisualStyleBackColor = true;
+            this.btnListPlayers.UseVisualStyleBackColor = false;
             this.btnListPlayers.Click += new System.EventHandler(this.btnListPlayers_Click);
             // 
             // colorDialogFirst
@@ -239,6 +247,8 @@ namespace WeAreTheChampions
             this.Controls.Add(this.lstTeams);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(448, 526);
+            this.MinimumSize = new System.Drawing.Size(448, 526);
             this.Name = "TeamsForm";
             this.Text = "TeamsForm";
             this.ResumeLayout(false);

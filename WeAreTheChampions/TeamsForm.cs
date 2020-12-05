@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeAreTheChampions.Model;
 
+
 namespace WeAreTheChampions
 {
     
@@ -18,6 +19,7 @@ namespace WeAreTheChampions
         private readonly WeAreTheChampionsContext db;
         public TeamsForm(WeAreTheChampionsContext db)
         {
+           
             this.db = db;
             InitializeComponent();
             ListTeams();
@@ -59,12 +61,12 @@ namespace WeAreTheChampions
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
-                if (db.Teams.ToList().Any(x => x.TeamName == txtTeamName.Text) && selectedTeam.TeamName != txtTeamName.Text)
+                if (db.Teams.ToList().Any(x => x.TeamName == (txtTeamName.Text).UppercaseFirst()) && selectedTeam.TeamName != (txtTeamName.Text).UppercaseFirst())
                 {
                     MessageBox.Show("There already a team in this team name");
                     return;
                 }
-                selectedTeam.TeamName = txtTeamName.Text;
+                selectedTeam.TeamName = (txtTeamName.Text).UppercaseFirst();
                 selectedTeam.TeamColors = colors;
                 db.SaveChanges();
                 ListTeams();
@@ -72,12 +74,12 @@ namespace WeAreTheChampions
                 WhenMakeChange(EventArgs.Empty);
                 return;
             }
-            if (db.Teams.ToList().Any(x => x.TeamName == txtTeamName.Text))
+            if (db.Teams.ToList().Any(x => x.TeamName == (txtTeamName.Text).UppercaseFirst()))
             {
                 MessageBox.Show("There already a team in this team name");
                 return;
             }
-            db.Teams.Add(new Team() { TeamName = txtTeamName.Text, TeamColors = colors});
+            db.Teams.Add(new Team() { TeamName = (txtTeamName.Text).UppercaseFirst(), TeamColors = colors});
             db.SaveChanges();
             ListTeams();
             ResetForm();
@@ -194,5 +196,7 @@ namespace WeAreTheChampions
             frmPlayersForm.ShowDialog();
 
         }
+
+
     }
 }

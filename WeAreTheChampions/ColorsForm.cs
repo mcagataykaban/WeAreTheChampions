@@ -28,7 +28,7 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var colorName = txtColorName.Text.Trim();
+            var colorName = txtColorName.Text.UppercaseFirst().Trim();
             if (colorName == "")
             {
                 MessageBox.Show("Please fill all fields correctly.");
@@ -37,12 +37,12 @@ namespace WeAreTheChampions
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedColor = (Model.Color)lstColors.SelectedItem;
-                if (db.Colors.Any(x => x.ColorName == selectedColor.ColorName) && selectedColor.ColorName != txtColorName.Text)
+                if (db.Colors.Any(x => x.ColorName == selectedColor.ColorName) && selectedColor.ColorName != txtColorName.Text.UppercaseFirst())
                 {
                     MessageBox.Show("Please enter different color name.");
                     return;
                 }
-                selectedColor.ColorName = txtColorName.Text;
+                selectedColor.ColorName = txtColorName.Text.UppercaseFirst();
                 selectedColor.Red = Convert.ToByte(lblRed.Text);
                 selectedColor.Green = Convert.ToByte(lblGreen.Text);
                 selectedColor.Blue = Convert.ToByte(lblBlue.Text);
@@ -54,7 +54,7 @@ namespace WeAreTheChampions
             }
             var color = new Model.Color
             {
-                ColorName = txtColorName.Text,
+                ColorName = txtColorName.Text.UppercaseFirst(),
                 Red = Convert.ToByte(lblRed.Text),
                 Green = Convert.ToByte(lblGreen.Text),
                 Blue = Convert.ToByte(lblBlue.Text)

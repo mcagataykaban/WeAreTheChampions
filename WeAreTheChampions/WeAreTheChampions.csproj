@@ -103,6 +103,7 @@
     <Compile Include="TeamsForm.Designer.cs">
       <DependentUpon>TeamsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="ColorsForm.resx">
       <DependentUpon>ColorsForm.cs</DependentUpon>
     </EmbeddedResource>
