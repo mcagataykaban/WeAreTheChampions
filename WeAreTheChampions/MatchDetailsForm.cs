@@ -57,9 +57,9 @@ namespace WeAreTheChampions
 
         private void ListTeamsNewMatch()
         {
-            var teams1 = db.Teams.ToList();
+            var teams1 = db.Teams.ToList().Where(x => !x.TeamName.Contains("(Closed)")).ToList();
             teams1.Insert(0, new Team { TeamName = "Select Team" });
-            var teams2 = db.Teams.ToList();
+            var teams2 = db.Teams.ToList().Where(x => !x.TeamName.Contains("(Closed)")).ToList();
             teams2.Insert(0, new Team { TeamName = "Select Team" });
             cboNewTeam1.DataSource = teams1;
             cboNewTeam2.DataSource = teams2;
@@ -101,12 +101,12 @@ namespace WeAreTheChampions
             if (selectedIdMainForm > 0 && isEditIdShow == true)
             {
                 var mac = db.Matches.ToList().Find(x => x.Id == selectedIdMainForm);
-                string mactext =mac.Id + " - " + mac.Team1.TeamName + "-" + mac.Team2.TeamName + " || " + mac.MatchTime?.ToShortDateString();
+                string mactext = mac.Id + " - " + mac.Team1.TeamName + "-" + mac.Team2.TeamName + " || " + mac.MatchTime?.ToShortDateString();
                 cboMatches.SelectedItem = mactext;
                 isEditIdShow = false;//değişti
 
             }
-            
+
             if (cboMatches.SelectedIndex == -1)
             {
                 cboEditTeam1.Enabled = cboEditTeam2.Enabled
@@ -126,6 +126,36 @@ namespace WeAreTheChampions
             nudScore1.Value = selectedMatch.Score1;
             nudScore2.Value = selectedMatch.Score2;
             dtpEditDate.Value = selectedMatch.MatchTime == null ? DateTime.Now : selectedMatch.MatchTime.Value;
+            var renkler = selectedMatch.Team1.TeamColors.ToList();
+            var renkler2 = selectedMatch.Team2.TeamColors.ToList();
+            if (renkler.Count == 0)
+            {
+                return;
+            }
+            else if (renkler.Count == 1)
+            {
+                lblFirstColor.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+            }
+            else if (renkler.Count == 2)
+            {
+                lblFirstColor.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+                lblSecondColor.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
+            }
+
+
+            if (renkler2.Count == 0)
+            {
+                return;
+            }
+            else if (renkler2.Count == 1)
+            {
+                label13.BackColor = System.Drawing.Color.FromArgb(renkler2[0].Red, renkler2[0].Green, renkler2[0].Blue);
+            }
+            else if (renkler2.Count == 2)
+            {
+                label13.BackColor = System.Drawing.Color.FromArgb(renkler2[0].Red, renkler2[0].Green, renkler2[0].Blue);
+                label14.BackColor = System.Drawing.Color.FromArgb(renkler2[1].Red, renkler2[1].Green, renkler2[1].Blue);
+            }
 
         }
 
@@ -133,7 +163,7 @@ namespace WeAreTheChampions
         {
             var matches = MatchListCreate();
             Match selectedMatch = matches.Find(x =>
-                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "//değişti
+                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "
                             + x.MatchTime?.ToShortDateString() == (string)cboMatches.SelectedItem);
             return selectedMatch;
         }

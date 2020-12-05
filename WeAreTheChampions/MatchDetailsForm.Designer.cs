@@ -51,8 +51,11 @@ namespace WeAreTheChampions
             this.label11 = new System.Windows.Forms.Label();
             this.nudScore2 = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblSecondColor = new System.Windows.Forms.Label();
+            this.lblFirstColor = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudScore1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudScore2)).BeginInit();
             this.SuspendLayout();
@@ -177,7 +180,7 @@ namespace WeAreTheChampions
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(434, 252);
+            this.label7.Location = new System.Drawing.Point(571, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 18);
             this.label7.TabIndex = 13;
@@ -262,16 +265,6 @@ namespace WeAreTheChampions
             this.label12.TabIndex = 21;
             this.label12.Text = "-";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label13.Location = new System.Drawing.Point(12, 234);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(24, 18);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "    ";
-            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.ForestGreen;
@@ -284,13 +277,48 @@ namespace WeAreTheChampions
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblSecondColor
+            // 
+            this.lblSecondColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSecondColor.Location = new System.Drawing.Point(43, 226);
+            this.lblSecondColor.Name = "lblSecondColor";
+            this.lblSecondColor.Size = new System.Drawing.Size(25, 26);
+            this.lblSecondColor.TabIndex = 26;
+            // 
+            // lblFirstColor
+            // 
+            this.lblFirstColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFirstColor.Location = new System.Drawing.Point(12, 226);
+            this.lblFirstColor.Name = "lblFirstColor";
+            this.lblFirstColor.Size = new System.Drawing.Size(25, 26);
+            this.lblFirstColor.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label13.Location = new System.Drawing.Point(573, 226);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 26);
+            this.label13.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label14.Location = new System.Drawing.Point(604, 226);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(25, 26);
+            this.label14.TabIndex = 27;
+            // 
             // MatchDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 362);
-            this.Controls.Add(this.btnSave);
+            this.ClientSize = new System.Drawing.Size(635, 363);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblSecondColor);
+            this.Controls.Add(this.lblFirstColor);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.nudScore2);
@@ -348,7 +376,10 @@ namespace WeAreTheChampions
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown nudScore2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblSecondColor;
+        private System.Windows.Forms.Label lblFirstColor;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

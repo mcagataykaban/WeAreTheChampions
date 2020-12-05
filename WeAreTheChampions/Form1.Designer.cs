@@ -179,7 +179,7 @@ namespace WeAreTheChampions
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(775, 463);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "WeAreTheChampions";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
