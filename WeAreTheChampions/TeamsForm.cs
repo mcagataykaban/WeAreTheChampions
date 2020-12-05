@@ -44,9 +44,17 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            var color1 = (Model.Color)cboFirstColor.SelectedItem;
+            var color2 = (Model.Color)cboSecondColor.SelectedItem;
+            if (color1 == null || color2 == null)
+            {
+                MessageBox.Show("Have to choose two colors.");
+                return;
+            }
             List<Model.Color> colors = new List<Model.Color>();
-            colors.Add((Model.Color)cboFirstColor.SelectedItem);
-            colors.Add((Model.Color)cboSecondColor.SelectedItem);
+            colors.Add(color1);
+            colors.Add(color2);
+            
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
@@ -143,7 +151,7 @@ namespace WeAreTheChampions
         {
             var team = (Team)lstTeams.SelectedItem;
             List<Model.Color> renkler = team.TeamColors.ToList();
-            if (renkler.Count == 0)
+            if (renkler.Count == 0 || renkler == null )
             {
                 lblBg.BackColor = System.Drawing.Color.Transparent;
                 lblBg2.BackColor = System.Drawing.Color.Transparent;

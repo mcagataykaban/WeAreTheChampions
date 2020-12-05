@@ -219,7 +219,6 @@ namespace WeAreTheChampions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(432, 487);
             this.Controls.Add(this.lblSecondColor);
             this.Controls.Add(this.lblFirstColor);
