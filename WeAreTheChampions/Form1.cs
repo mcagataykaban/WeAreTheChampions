@@ -123,5 +123,11 @@ namespace WeAreTheChampions
             var frmPlayersForm = new PlayersForm(db);
             frmPlayersForm.ShowDialog();
         }
+
+        private void tsmiColors_Click(object sender, EventArgs e)
+        {
+            var frmColorsForm = new ColorsForm(db);
+            frmColorsForm.ShowDialog();
+        }
     }
 }

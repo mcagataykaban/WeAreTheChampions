@@ -25,7 +25,9 @@ namespace WeAreTheChampions
 
         private void ListPlayersTeam()
         {
-            var teams = db.Teams.ToList();
+            var teams = db.Teams.ToList()
+                .Where(x => !x.TeamName.Contains("(Closed)"))
+                .ToList();
             teams.Insert(0, new Team { TeamName = "Select Team" });
             teams.Insert(1, new Team { TeamName = "Free Agency" });
             cboPlayersTeam.DataSource = teams;
@@ -33,7 +35,9 @@ namespace WeAreTheChampions
 
         private void ListTeams()
         {
-            var teams = db.Teams.ToList();
+            var teams = db.Teams.ToList()
+                .Where(x => !x.TeamName.Contains("(Closed)"))
+                .ToList();
             teams.Insert(0, new Team { TeamName = "All" });
             teams.Insert(1, new Team { TeamName = "Free Agency" });
             cboTeams.DataSource = teams;

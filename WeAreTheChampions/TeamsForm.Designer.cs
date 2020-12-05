@@ -37,9 +37,7 @@ namespace WeAreTheChampions
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnListPlayers = new System.Windows.Forms.Button();
-            this.lblColorFirst = new System.Windows.Forms.Label();
             this.colorDialogFirst = new System.Windows.Forms.ColorDialog();
-            this.lblColorSecond = new System.Windows.Forms.Label();
             this.colorDialogSecond = new System.Windows.Forms.ColorDialog();
             this.lblBg = new System.Windows.Forms.Label();
             this.lblBg2 = new System.Windows.Forms.Label();
@@ -55,7 +53,6 @@ namespace WeAreTheChampions
             this.lstTeams.Name = "lstTeams";
             this.lstTeams.Size = new System.Drawing.Size(401, 256);
             this.lstTeams.TabIndex = 0;
-            this.lstTeams.SelectedIndexChanged += new System.EventHandler(this.lstTeams_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -125,40 +122,23 @@ namespace WeAreTheChampions
             this.btnListPlayers.Text = "📜 List Players";
             this.btnListPlayers.UseVisualStyleBackColor = true;
             // 
-            // lblColorFirst
-            // 
-            this.lblColorFirst.BackColor = System.Drawing.Color.Transparent;
-            this.lblColorFirst.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblColorFirst.Location = new System.Drawing.Point(242, 53);
-            this.lblColorFirst.Name = "lblColorFirst";
-            this.lblColorFirst.Size = new System.Drawing.Size(177, 20);
-            this.lblColorFirst.TabIndex = 11;
-            this.lblColorFirst.Text = "👆 Choose first color";
-            this.lblColorFirst.Click += new System.EventHandler(this.lblColorFirst_Click);
-            // 
             // colorDialogFirst
             // 
-            this.colorDialogFirst.AllowFullOpen = false;
             this.colorDialogFirst.AnyColor = true;
-            // 
-            // lblColorSecond
-            // 
-            this.lblColorSecond.BackColor = System.Drawing.Color.Transparent;
-            this.lblColorSecond.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblColorSecond.Location = new System.Drawing.Point(242, 82);
-            this.lblColorSecond.Name = "lblColorSecond";
-            this.lblColorSecond.Size = new System.Drawing.Size(177, 24);
-            this.lblColorSecond.TabIndex = 12;
-            this.lblColorSecond.Text = "👆 Choose second color";
-            this.lblColorSecond.Click += new System.EventHandler(this.lblColorSecond_Click);
+            this.colorDialogFirst.Color = System.Drawing.Color.DarkGray;
+            this.colorDialogFirst.FullOpen = true;
+            this.colorDialogFirst.SolidColorOnly = true;
             // 
             // colorDialogSecond
             // 
-            this.colorDialogSecond.AllowFullOpen = false;
             this.colorDialogSecond.AnyColor = true;
+            this.colorDialogSecond.Color = System.Drawing.Color.DarkGray;
+            this.colorDialogSecond.FullOpen = true;
+            this.colorDialogSecond.SolidColorOnly = true;
             // 
             // lblBg
             // 
+            this.lblBg.BackColor = System.Drawing.Color.Transparent;
             this.lblBg.Location = new System.Drawing.Point(-1, -2);
             this.lblBg.Name = "lblBg";
             this.lblBg.Size = new System.Drawing.Size(432, 14);
@@ -166,6 +146,7 @@ namespace WeAreTheChampions
             // 
             // lblBg2
             // 
+            this.lblBg2.BackColor = System.Drawing.Color.Transparent;
             this.lblBg2.Location = new System.Drawing.Point(-1, 12);
             this.lblBg2.Name = "lblBg2";
             this.lblBg2.Size = new System.Drawing.Size(432, 14);
@@ -175,11 +156,10 @@ namespace WeAreTheChampions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(432, 487);
             this.Controls.Add(this.lblBg2);
             this.Controls.Add(this.lblBg);
-            this.Controls.Add(this.lblColorSecond);
-            this.Controls.Add(this.lblColorFirst);
             this.Controls.Add(this.btnListPlayers);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
@@ -207,9 +187,7 @@ namespace WeAreTheChampions
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnListPlayers;
-        private System.Windows.Forms.Label lblColorFirst;
         private System.Windows.Forms.ColorDialog colorDialogFirst;
-        private System.Windows.Forms.Label lblColorSecond;
         private System.Windows.Forms.ColorDialog colorDialogSecond;
         private System.Windows.Forms.Label lblBg;
         private System.Windows.Forms.Label lblBg2;

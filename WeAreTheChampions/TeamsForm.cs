@@ -24,32 +24,27 @@ namespace WeAreTheChampions
             
         }
 
-        private void TeamColorShow()
-        {
+        //private void TeamColorShow()
+        //{
             
-            var team = (Team)lstTeams.SelectedItem;
-            List<Model.Color> renkler = team.TeamColors.ToList();
-            if (renkler.Count == 0)
-            {
-                lblBg.BackColor = System.Drawing.Color.Transparent;
-                lblColorFirst.BackColor = lblColorSecond.BackColor = System.Drawing.Color.Transparent;
-                return;
-            }
-            if (renkler.Count == 1)
-            {
-                lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-                lblColorFirst.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-                return;
-            }
-  
-                lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-                lblColorFirst.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-            lblBg2.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
-            lblColorSecond.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
-
-
-
-        }
+        //    var team = (Team)lstTeams.SelectedItem;
+        //    List<Model.Color> renkler = team.TeamColors.ToList();
+        //    if (renkler.Count == 0)
+        //    {
+        //        lblBg.BackColor = System.Drawing.Color.Transparent;
+        //        lblBg2.BackColor = System.Drawing.Color.Transparent;
+        //    }
+        //    else if (renkler.Count == 1)
+        //    {
+        //        lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+        //        lblBg2.BackColor = System.Drawing.Color.Transparent;
+        //    }
+        //    else
+        //    {
+        //        lblBg.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
+        //        lblBg2.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
+        //    }
+        //}
 
         protected virtual void WhenMakeChange(EventArgs args)
         {
@@ -63,14 +58,15 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var renk = CreateColor(lblColorFirst);
-            var renk2 = CreateColor(lblColorSecond);
+            //var color1 = CreateColor(lblColorFirst);
+            //var color2 = CreateColor(lblColorSecond);
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
-              
-                //selectedTeam.TeamColors.Add(renk);
-                //selectedTeam.TeamColors.Add(renk2);
+                //List<Model.Color> colorEdit = new List<Model.Color>();
+                //colorEdit.Add(color1);
+                //colorEdit.Add(color2);
+                //selectedTeam.TeamColors = colorEdit;
                 selectedTeam.TeamName = txtTeamName.Text;
                 db.SaveChanges();
                 ListTeams();
@@ -78,38 +74,47 @@ namespace WeAreTheChampions
                 WhenMakeChange(EventArgs.Empty);
                 return;
             }
-            List<Model.Color> renkler = new List<Model.Color>();
-            renkler.Add(renk);
-            renkler.Add(renk2);
-            db.Teams.Add(new Team { TeamName = txtTeamName.Text , TeamColors = renkler});
+            //List<Model.Color> colors = new List<Model.Color>();
+            //colors.Add(color1);
+            //colors.Add(color2);
+            db.Teams.Add(new Team() { TeamName = txtTeamName.Text});
             db.SaveChanges();
             ListTeams();
+            ResetForm();
             WhenMakeChange(EventArgs.Empty);
         }
 
-        private Model.Color CreateColor(Label lbl)
-        {
-            System.Drawing.Color firstLblColor = lbl.BackColor;
-            byte r = firstLblColor.R;
-            byte g = firstLblColor.G;
-            byte b = firstLblColor.B;
-            var renk = new Model.Color() { Red = r, Green = g, Blue = b };
-            return renk;
-        }
+        //private Model.Color CreateColor(Label lbl)
+        //{
+        //    System.Drawing.Color firstLblColor = lbl.BackColor;
+        //    byte r = firstLblColor.R;
+        //    byte g = firstLblColor.G;
+        //    byte b = firstLblColor.B;
+        //    var renk = new Model.Color() { Red = r, Green = g, Blue = b };
+        //    return renk;
+        //}
 
         private void ResetForm()
         {
             txtTeamName.Clear();
+            //lblColorFirst.BackColor = System.Drawing.Color.Transparent;
+            //lblColorSecond.BackColor = System.Drawing.Color.Transparent;
             lstTeams.Enabled = true;
             btnAdd.Text = "➕ Add";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+        
             if (lstTeams.SelectedIndex < 0)
                 return;
             var selectedTeam = (Team)lstTeams.SelectedItem;
-            if (selectedTeam.Players != null || selectedTeam.Team1Matches != null || selectedTeam.Team2Matches != null)
+            if (selectedTeam.TeamName.Contains("(Closed)"))
+            {
+                MessageBox.Show("Selected team already closed.");
+                return;
+            }
+            if (selectedTeam.Players.Count != 0 || selectedTeam.Team1Matches.Count != 0 || selectedTeam.Team2Matches.Count != 0)
             {
                 selectedTeam.TeamName = selectedTeam.TeamName + "(Closed)";
                 if (selectedTeam.Players.Count != 0)
@@ -130,54 +135,24 @@ namespace WeAreTheChampions
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lstTeams.SelectedIndex < 0)
-                return;
-            //Düzenleme Moduna Geç
+            if (lstTeams.SelectedIndex < 0) return;
+            //Edit Mode Activated
             lstTeams.Enabled = false;
             var selectedTeam = (Team)lstTeams.SelectedItem;
+            //List<Model.Color> colors = selectedTeam.TeamColors.ToList();
+            //lblColorFirst.BackColor = System.Drawing.Color.FromArgb(colors[0].Red, colors[0].Green, colors[0].Blue);
+            //lblColorSecond.BackColor = System.Drawing.Color.FromArgb(colors[1].Red, colors[1].Green, colors[1].Blue);
             btnAdd.Text = "💾 Save";
             txtTeamName.Text = selectedTeam.TeamName;
+            
         }
 
-        private void lblColorFirst_Click(object sender, EventArgs e)
-        {
-            if (colorDialogFirst.ShowDialog() == DialogResult.OK)
-                lblColorFirst.BackColor = colorDialogFirst.Color;
-        }
-
-        private void lstTeams_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TeamColorShow();
-
-        }
-
-        private void lblColorSecond_Click(object sender, EventArgs e)
-        {
-            if (colorDialogSecond.ShowDialog() == DialogResult.OK)
-                lblColorSecond.BackColor = colorDialogSecond.Color;
-        }
+            //if (colorDialogFirst.ShowDialog() == DialogResult.OK)
+            //    lblColorFirst.BackColor = colorDialogFirst.Color;
+       
 
 
-        //var labeller = new List<Label>();
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    Label label = new Label();
-        //    label.Visible = true;
-        //    label.Text = "selam";
-        //    label.Left = 100;
-        //    label.Top = 100;
-        //    label.Width = 100;
-        //    label.Height = 100;
-
-        //    label.BackColor = System.Drawing.Color.Red;
-        //    labeller.Insert(i, label);
-        //}
-
-        //if (colorDialogFirst.ShowDialog() == DialogResult.OK)
-        //{
-        //    lblColorFirst.BackColor = colorDialogFirst.Color;
-
-        //}
+    
 
 
     }
