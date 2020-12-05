@@ -14,10 +14,13 @@ namespace WeAreTheChampions
     public partial class PlayersForm : Form
     {
         private readonly WeAreTheChampionsContext db;
-        public PlayersForm(WeAreTheChampionsContext db)
+        private int teamId;
+        public PlayersForm(WeAreTheChampionsContext db,int teamId)
         {
+            this.teamId = teamId;
             this.db = db;
             InitializeComponent();
+            
             ListPlayersTeam();
             ListTeams();
 
@@ -45,7 +48,13 @@ namespace WeAreTheChampions
 
         private void ListPlayers()
         {
-            var selectedTeam = (Team)cboTeams.SelectedItem;
+            if (teamId != 0)
+            {
+                var team = db.Teams.ToList().Find(x => x.Id == teamId);
+                cboTeams.SelectedItem = team;
+                teamId = 0;
+            }
+            var selectedTeam =  (Team)cboTeams.SelectedItem;
             var selectedTeamId = selectedTeam.Id;
             if (cboTeams.SelectedIndex == 0)
                 lstPlayers.DataSource = db.Players.ToList();
@@ -68,10 +77,17 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (cboPlayersTeam.SelectedIndex == 0)
+            {
+                MessageBox.Show("You have to choose team.");
+                return;
+            }
             if (btnAdd.Text == "💾 Save")
             {
+                
                 var selectedPlayer = (Player)lstPlayers.SelectedItem;
                 selectedPlayer.PlayerName = txtPlayerName.Text;
+                
                 var teamEdit = (Team)cboPlayersTeam.SelectedItem;
                 selectedPlayer.Team = cboPlayersTeam.SelectedIndex == 1 ? null : teamEdit;
                 db.SaveChanges();

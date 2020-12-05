@@ -120,7 +120,8 @@ namespace WeAreTheChampions
 
         private void tsmiPlayers_Click(object sender, EventArgs e)
         {
-            var frmPlayersForm = new PlayersForm(db);
+            var teamId = 0;
+            var frmPlayersForm = new PlayersForm(db, teamId);
             frmPlayersForm.ShowDialog();
         }
 

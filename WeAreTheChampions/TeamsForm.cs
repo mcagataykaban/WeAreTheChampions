@@ -167,5 +167,14 @@ namespace WeAreTheChampions
                 lblBg2.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
             }
         }
+
+        private void btnListPlayers_Click(object sender, EventArgs e)
+        {
+            var team = (Team)lstTeams.SelectedItem;
+            var teamId = team.Id;
+            var frmPlayersForm = new PlayersForm(db, teamId);
+            frmPlayersForm.ShowDialog();
+
+        }
     }
 }

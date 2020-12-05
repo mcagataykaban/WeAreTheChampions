@@ -128,6 +128,7 @@ namespace WeAreTheChampions
             this.btnListPlayers.TabIndex = 10;
             this.btnListPlayers.Text = "📜 List Players";
             this.btnListPlayers.UseVisualStyleBackColor = true;
+            this.btnListPlayers.Click += new System.EventHandler(this.btnListPlayers_Click);
             // 
             // colorDialogFirst
             // 

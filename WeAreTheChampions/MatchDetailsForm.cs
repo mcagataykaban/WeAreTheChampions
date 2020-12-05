@@ -47,7 +47,6 @@ namespace WeAreTheChampions
         private List<Match> MatchListCreate()
         {
             var matches = db.Matches.ToList().OrderBy(x => x.MatchTime).ToList();
-
             return matches;
         }
 
