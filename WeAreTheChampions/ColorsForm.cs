@@ -37,12 +37,12 @@ namespace WeAreTheChampions
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedColor = (Model.Color)lstColors.SelectedItem;
-                selectedColor.ColorName = txtColorName.Text;
-                if (db.Colors.Any(x => x.ColorName == selectedColor.ColorName))
+                if (db.Colors.Any(x => x.ColorName == selectedColor.ColorName) && selectedColor.ColorName != txtColorName.Text)
                 {
                     MessageBox.Show("Please enter different color name.");
                     return;
                 }
+                selectedColor.ColorName = txtColorName.Text;
                 selectedColor.Red = Convert.ToByte(lblRed.Text);
                 selectedColor.Green = Convert.ToByte(lblGreen.Text);
                 selectedColor.Blue = Convert.ToByte(lblBlue.Text);

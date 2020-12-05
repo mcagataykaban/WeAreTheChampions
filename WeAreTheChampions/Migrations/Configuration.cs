@@ -16,17 +16,35 @@
 
         protected override void Seed(WeAreTheChampions.Model.WeAreTheChampionsContext context)
         {
+            if (!context.Colors.Any())
+            {
+                context.Colors.AddRange(Color());
+            }
             if (!context.Teams.Any())
                 context.Teams.AddRange(Team());
             if (!context.Players.Any())
                 context.Players.AddRange(Player());
             if (!context.Matches.Any())
             {
-                context.Matches.Add((new Match() { Team1Id = 1, Team2Id = 2, Score1 = 2, Score2 = 2, Result = Result.Draw }));
+                context.Matches.Add((new Match() { Team1Id = 1, Team2Id = 2, Score1 = 2, Score2 = 2 }));
             }
+        }
+        private List<Model.Color> Color()
+        {
+
+            return new List<Model.Color>()
+            {
+                new Model.Color() { ColorName = "Siyah", Red = 0, Blue = 0, Green = 0},
+                new Model.Color() { ColorName = "Kırmızı", Red = 255, Blue = 0, Green = 0},
+                new Model.Color() { ColorName = "Mavi", Red = 0, Blue = 255, Green = 0},
+                new Model.Color() { ColorName = "Yeşil", Red = 0, Blue = 0, Green = 255},
+                new Model.Color() { ColorName = "Beyaz", Red = 255, Blue = 255, Green = 255},
+
+            };
         }
         private List<Team> Team()
         {
+
             return new List<Team>()
             {
                 new Team() { TeamName = "Manchester United"},
@@ -76,7 +94,7 @@
                 new Player() {  PlayerName ="Zlatan Ibrahimovic", TeamId = 3 }
             };
 
-            
+
         }
 
     }
