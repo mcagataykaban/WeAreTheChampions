@@ -61,14 +61,12 @@ namespace WeAreTheChampions
             List<Model.Color> colors = new List<Model.Color>();
             colors.Add(color1);
             colors.Add(color2);
-            
             var teamName = (txtTeamName.Text).UppercaseFirst();
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
-                if (db.Teams.ToList().Any(x => x.TeamName.ToLower() == teamName.ToLower().Replace(" ", "")) 
-                    && selectedTeam.TeamName.ToLower() != teamName.ToLower().Replace(" ", ""))
-                {
+                if (db.Teams.ToList().Any(x => x.TeamName.ToLower() == teamName.ToLower().Replace(" ", "")))
+                {//abab != abab
                     MessageBox.Show("There already a team in this team name");
                     return;
                 }
@@ -79,7 +77,6 @@ namespace WeAreTheChampions
                 ResetForm();
                 WhenMakeChange(EventArgs.Empty);
                 return;
-
             }
             if (db.Teams.ToList().Any(x => x.TeamName.ToLower() == teamName.ToLower().Replace(" ", "")))
             {
@@ -96,6 +93,8 @@ namespace WeAreTheChampions
    
         private void ResetForm()
         {
+            btnEdit.Text = "🖊 Edit";
+            btnEdit.BackColor = System.Drawing.Color.DarkKhaki;
             txtTeamName.Clear();
             lblFirstColor.BackColor = lblSecondColor.BackColor = System.Drawing.Color.Transparent;
             lstTeams.Enabled = true;
@@ -135,6 +134,13 @@ namespace WeAreTheChampions
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (btnEdit.Text == "❌ Cancel")
+            {
+                ResetForm();
+                return;
+            }
+            btnEdit.Text = "❌ Cancel";
+            btnEdit.BackColor = System.Drawing.Color.Black;
             if (lstTeams.SelectedIndex < 0) return;
             lstTeams.Enabled = false;
             var selectedTeam = (Team)lstTeams.SelectedItem;
@@ -203,7 +209,5 @@ namespace WeAreTheChampions
             frmPlayersForm.ShowDialog();
 
         }
-
-
     }
 }

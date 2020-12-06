@@ -16,45 +16,37 @@ namespace WeAreTheChampions
         public event EventHandler HasBeenChanged;
         private readonly WeAreTheChampionsContext db;
         private readonly int selectedIdMainForm; 
-        bool isEditIdShow;//değişti
+        bool isEditIdShow;
         public MatchDetailsForm(WeAreTheChampionsContext db, int selectedIdMainForm)
         {
             this.selectedIdMainForm = selectedIdMainForm;
             this.db = db;
             InitializeComponent();
-            isEditIdShow = true; //değişti
+            isEditIdShow = true; 
             ListTeamsNewMatch();
             ListTeamsEditMatch();
         }
-
         private void ListTeamsEditMatch()
         {
 
             var matches = MatchListCreate();
             var matchesplus = matches.OrderByDescending(x => x.MatchTime).Select(x =>
-                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "//değişti
+                            x.Id + " - " + x.Team1.TeamName + "-" + x.Team2.TeamName + " || "
                              + x.MatchTime?.ToShortDateString())
                 .ToList();
             cboMatches.DataSource = matchesplus;
-            if (isEditIdShow == true)//değişti
-            {
+            if (isEditIdShow == true)
                 cboMatches.SelectedIndex = -1;
-
-            }
-
         }
-
         private List<Match> MatchListCreate()
         {
             var matches = db.Matches.ToList().OrderBy(x => x.MatchTime).ToList();
             return matches;
         }
-
         protected virtual void WhenMakeChange(EventArgs args)
         {
             HasBeenChanged?.Invoke(this, args);
         }
-
         private void ListTeamsNewMatch()
         {
             var teams1 = db.Teams.ToList().Where(x => !x.TeamName.Contains("(Closed)")).ToList();
@@ -64,7 +56,6 @@ namespace WeAreTheChampions
             cboNewTeam1.DataSource = teams1;
             cboNewTeam2.DataSource = teams2;
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (cboNewTeam1.SelectedIndex == 0 || cboNewTeam2.SelectedIndex == 0 || (Team)cboNewTeam1.SelectedItem == (Team)cboNewTeam2.SelectedItem)
@@ -75,7 +66,6 @@ namespace WeAreTheChampions
             var team1 = (Team)cboNewTeam1.SelectedItem;
             var team2 = (Team)cboNewTeam2.SelectedItem;
             DateTime? matchDate = dtpNewDate.Value;
-
             db.Matches.Add(new Match()
             {
                 Team1 = team1,
@@ -86,16 +76,13 @@ namespace WeAreTheChampions
             ListTeamsEditMatch();
             WhenMakeChange(EventArgs.Empty);
             ResetForm();
-
         }
-
         private void ResetForm()
         {
             cboNewTeam1.SelectedIndex = 0;
             cboNewTeam2.SelectedIndex = 0;
             dtpNewDate.Value = DateTime.Now;
         }
-
         private void cboMatches_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (selectedIdMainForm > 0 && isEditIdShow == true)
@@ -103,10 +90,8 @@ namespace WeAreTheChampions
                 var mac = db.Matches.ToList().Find(x => x.Id == selectedIdMainForm);
                 string mactext = mac.Id + " - " + mac.Team1.TeamName + "-" + mac.Team2.TeamName + " || " + mac.MatchTime?.ToShortDateString();
                 cboMatches.SelectedItem = mactext;
-                isEditIdShow = false;//değişti
-
+                isEditIdShow = false;
             }
-
             if (cboMatches.SelectedIndex == -1)
             {
                 cboEditTeam1.Enabled = cboEditTeam2.Enabled
@@ -114,8 +99,6 @@ namespace WeAreTheChampions
                     = dtpEditDate.Enabled = false;
                 return;
             }
-
-
             cboEditTeam1.Enabled = cboEditTeam2.Enabled = true;
             nudScore1.Enabled = nudScore2.Enabled = dtpEditDate.Enabled = true;
             cboEditTeam1.DataSource = db.Teams.ToList();
@@ -129,28 +112,18 @@ namespace WeAreTheChampions
             var renkler = selectedMatch.Team1.TeamColors.ToList();
             var renkler2 = selectedMatch.Team2.TeamColors.ToList();
             if (renkler.Count == 0)
-            {
                 return;
-            }
             else if (renkler.Count == 1)
-            {
                 lblFirstColor.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
-            }
             else if (renkler.Count == 2)
             {
                 lblFirstColor.BackColor = System.Drawing.Color.FromArgb(renkler[0].Red, renkler[0].Green, renkler[0].Blue);
                 lblSecondColor.BackColor = System.Drawing.Color.FromArgb(renkler[1].Red, renkler[1].Green, renkler[1].Blue);
             }
-
-
             if (renkler2.Count == 0)
-            {
                 return;
-            }
             else if (renkler2.Count == 1)
-            {
                 label13.BackColor = System.Drawing.Color.FromArgb(renkler2[0].Red, renkler2[0].Green, renkler2[0].Blue);
-            }
             else if (renkler2.Count == 2)
             {
                 label13.BackColor = System.Drawing.Color.FromArgb(renkler2[0].Red, renkler2[0].Green, renkler2[0].Blue);
@@ -158,7 +131,6 @@ namespace WeAreTheChampions
             }
 
         }
-
         private Match FindSelectedMatch()
         {
             var matches = MatchListCreate();
@@ -167,7 +139,6 @@ namespace WeAreTheChampions
                             + x.MatchTime?.ToShortDateString() == (string)cboMatches.SelectedItem);
             return selectedMatch;
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (cboMatches.SelectedIndex == -1)
@@ -189,15 +160,9 @@ namespace WeAreTheChampions
             db.SaveChanges();
             WhenMakeChange(EventArgs.Empty);
             MessageBox.Show("All changes has been saved.");
-            if (selectedIdMainForm > 0)//değişti
-            {
+            if (selectedIdMainForm > 0)
                 Close();
-            }
-            ListTeamsEditMatch();
-            
-
-        }
-
-       
+            ListTeamsEditMatch();           
+        } 
     }
 }

@@ -105,7 +105,6 @@ namespace WeAreTheChampions
 
         private void lstColors_SelectedIndexChanged(object sender, EventArgs e)
         {
-      
             var selectedColor = (Model.Color)lstColors.SelectedItem;
             lblPreview.BackColor = System.Drawing.Color.FromArgb(selectedColor.Red, selectedColor.Green, selectedColor.Blue);
         }

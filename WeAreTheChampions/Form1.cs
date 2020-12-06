@@ -5,22 +5,31 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeAreTheChampions.Model;
+using WMPLib;
 
 namespace WeAreTheChampions
 {
 
     public partial class Form1 : Form
     {
+      
+       
+       
         WeAreTheChampionsContext db = new WeAreTheChampionsContext();
+        WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
+
         public Form1()
         {
             InitializeComponent();
             ResultControl();
             ListMatches();
+            wplayer.settings.setMode("loop", true);
+            wplayer.URL = "music.mp3";
         }
 
         private void ResultControl()
@@ -49,7 +58,6 @@ namespace WeAreTheChampions
                 matches = maclar.Where(x => x.Result == null)
                 .ToList();
             }
-            
             dgvMatches.DataSource = matches;
             
         }
@@ -131,6 +139,24 @@ namespace WeAreTheChampions
         {
             var frmColorsForm = new ColorsForm(db);
             frmColorsForm.ShowDialog();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            wplayer.controls.play();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.pause();
+            btnPlay.Visible = true;
+            btnStop.Visible = false;
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.play();
+            btnPlay.Visible = false;
+            btnStop.Visible = true;
         }
     }
 }

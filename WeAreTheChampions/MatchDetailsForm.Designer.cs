@@ -343,6 +343,8 @@ namespace WeAreTheChampions
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(651, 402);
+            this.MinimumSize = new System.Drawing.Size(651, 402);
             this.Name = "MatchDetailsForm";
             this.Text = "MatchDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.nudScore1)).EndInit();

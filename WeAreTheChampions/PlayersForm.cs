@@ -20,10 +20,8 @@ namespace WeAreTheChampions
             this.teamId = teamId;
             this.db = db;
             InitializeComponent();
-            
             ListPlayersTeam();
             ListTeams();
-
         }
 
         private void ListPlayersTeam()
@@ -130,7 +128,6 @@ namespace WeAreTheChampions
             //Düzenle Moduna Geç
             if (lstPlayers.SelectedIndex < 0)
                 return;
-
             lstPlayers.Enabled = false;
             var selectedPlayer = (Player)lstPlayers.SelectedItem;
             btnAdd.Text = "💾 Save";

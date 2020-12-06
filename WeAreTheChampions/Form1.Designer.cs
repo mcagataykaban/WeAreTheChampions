@@ -43,6 +43,8 @@ namespace WeAreTheChampions
             this.tsmiColors = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlayers = new System.Windows.Forms.ToolStripMenuItem();
             this.chkHideCompleted = new System.Windows.Forms.CheckBox();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +59,7 @@ namespace WeAreTheChampions
             this.dgvMatches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMatches.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMatches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMatches.Location = new System.Drawing.Point(13, 53);
+            this.dgvMatches.Location = new System.Drawing.Point(13, 60);
             this.dgvMatches.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMatches.Name = "dgvMatches";
             this.dgvMatches.ReadOnly = true;
@@ -71,7 +73,7 @@ namespace WeAreTheChampions
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(14, 25);
+            this.label1.Location = new System.Drawing.Point(14, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 24);
@@ -83,7 +85,7 @@ namespace WeAreTheChampions
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BackColor = System.Drawing.Color.DarkGreen;
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAdd.Location = new System.Drawing.Point(520, 376);
+            this.btnAdd.Location = new System.Drawing.Point(520, 383);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(226, 31);
             this.btnAdd.TabIndex = 2;
@@ -96,7 +98,7 @@ namespace WeAreTheChampions
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEdit.BackColor = System.Drawing.Color.DarkKhaki;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEdit.Location = new System.Drawing.Point(13, 376);
+            this.btnEdit.Location = new System.Drawing.Point(13, 383);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 31);
             this.btnEdit.TabIndex = 3;
@@ -109,7 +111,7 @@ namespace WeAreTheChampions
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.BackColor = System.Drawing.Color.DarkRed;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(119, 376);
+            this.btnDelete.Location = new System.Drawing.Point(119, 383);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 31);
             this.btnDelete.TabIndex = 4;
@@ -154,7 +156,7 @@ namespace WeAreTheChampions
             // 
             this.chkHideCompleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkHideCompleted.AutoSize = true;
-            this.chkHideCompleted.Location = new System.Drawing.Point(552, 28);
+            this.chkHideCompleted.Location = new System.Drawing.Point(498, 32);
             this.chkHideCompleted.Name = "chkHideCompleted";
             this.chkHideCompleted.Size = new System.Drawing.Size(194, 22);
             this.chkHideCompleted.TabIndex = 6;
@@ -162,11 +164,38 @@ namespace WeAreTheChampions
             this.chkHideCompleted.UseVisualStyleBackColor = true;
             this.chkHideCompleted.CheckedChanged += new System.EventHandler(this.chkHideCompleted_CheckedChanged);
             // 
+            // btnStop
+            // 
+            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.Location = new System.Drawing.Point(699, 13);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(48, 41);
+            this.btnStop.TabIndex = 7;
+            this.btnStop.Text = "🔇";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.Location = new System.Drawing.Point(698, 13);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(48, 41);
+            this.btnPlay.TabIndex = 8;
+            this.btnPlay.Text = "🔊";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Visible = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 424);
+            this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.chkHideCompleted);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -180,6 +209,7 @@ namespace WeAreTheChampions
             this.MinimumSize = new System.Drawing.Size(775, 463);
             this.Name = "Form1";
             this.Text = "WeAreTheChampions";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -200,6 +230,8 @@ namespace WeAreTheChampions
         private System.Windows.Forms.ToolStripMenuItem tsmiColors;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlayers;
         private System.Windows.Forms.CheckBox chkHideCompleted;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPlay;
     }
 }
 

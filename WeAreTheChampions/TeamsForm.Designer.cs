@@ -106,7 +106,7 @@ namespace WeAreTheChampions
             // 
             this.btnEdit.BackColor = System.Drawing.Color.DarkKhaki;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEdit.Location = new System.Drawing.Point(18, 446);
+            this.btnEdit.Location = new System.Drawing.Point(19, 446);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 31);
             this.btnEdit.TabIndex = 7;
