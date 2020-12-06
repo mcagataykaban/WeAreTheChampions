@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace WeAreTheChampions
             {
                 return string.Empty;
             }
-            return char.ToUpper(s[0]) + s.Substring(1);
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s.ToLower());
         }
     }
 }
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,8 +49,9 @@ namespace WeAreTheChampions
                 matches = maclar.Where(x => x.Result == null)
                 .ToList();
             }
-
+            
             dgvMatches.DataSource = matches;
+            
         }
         //https://stackoverflow.com/questions/10073319/returning-anonymous-type-in-c-sharp
         private IEnumerable<T> Anonim<T>()

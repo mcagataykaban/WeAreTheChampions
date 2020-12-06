@@ -84,15 +84,8 @@ namespace WeAreTheChampions
             }
             if (btnAdd.Text == "💾 Save")
             {
-                
                 var selectedPlayer = (Player)lstPlayers.SelectedItem;
-                if (db.Players.ToList().Any(x => x.PlayerName == (txtPlayerName.Text).UppercaseFirst()) && selectedPlayer.PlayerName != (txtPlayerName.Text).UppercaseFirst())
-                {
-                    MessageBox.Show("There already a team in this team name");
-                    return;
-                }
                 selectedPlayer.PlayerName = txtPlayerName.Text.UppercaseFirst();
-                
                 var teamEdit = (Team)cboPlayersTeam.SelectedItem;
                 selectedPlayer.Team = cboPlayersTeam.SelectedIndex == 1 ? null : teamEdit;
                 db.SaveChanges();
@@ -102,13 +95,6 @@ namespace WeAreTheChampions
                 return;
             }
             string playerName = txtPlayerName.Text.UppercaseFirst().Trim();
-            if (db.Players.ToList().Any(x => x.PlayerName == playerName))
-            {
-                MessageBox.Show("There already a team in this team name");
-                return;
-            }
-            
-            
             var team = (Team)cboPlayersTeam.SelectedItem;
             db.Players.Add(new Player() 
             { 
@@ -118,8 +104,6 @@ namespace WeAreTheChampions
             db.SaveChanges();
             ListPlayers();
             ResetForm();
-
-
         }
 
 

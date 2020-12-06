@@ -46,7 +46,11 @@ namespace WeAreTheChampions
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+            if (txtTeamName.Text == "")
+            {
+                MessageBox.Show("Please fill teamname field");
+                return;
+            }
             var color1 = (Model.Color)cboFirstColor.SelectedItem;
             var color2 = (Model.Color)cboSecondColor.SelectedItem;
             if (color1 == null || color2 == null)
@@ -58,35 +62,38 @@ namespace WeAreTheChampions
             colors.Add(color1);
             colors.Add(color2);
             
+            var teamName = (txtTeamName.Text).UppercaseFirst();
             if (btnAdd.Text == "💾 Save")
             {
                 var selectedTeam = (Team)lstTeams.SelectedItem;
-                if (db.Teams.ToList().Any(x => x.TeamName == (txtTeamName.Text).UppercaseFirst()) && selectedTeam.TeamName != (txtTeamName.Text).UppercaseFirst())
+                if (db.Teams.ToList().Any(x => x.TeamName.ToLower() == teamName.ToLower().Replace(" ", "")) 
+                    && selectedTeam.TeamName.ToLower() != teamName.ToLower().Replace(" ", ""))
                 {
                     MessageBox.Show("There already a team in this team name");
                     return;
                 }
-                selectedTeam.TeamName = (txtTeamName.Text).UppercaseFirst();
+                selectedTeam.TeamName = teamName;
                 selectedTeam.TeamColors = colors;
                 db.SaveChanges();
                 ListTeams();
                 ResetForm();
                 WhenMakeChange(EventArgs.Empty);
                 return;
+
             }
-            if (db.Teams.ToList().Any(x => x.TeamName == (txtTeamName.Text).UppercaseFirst()))
+            if (db.Teams.ToList().Any(x => x.TeamName.ToLower() == teamName.ToLower().Replace(" ", "")))
             {
                 MessageBox.Show("There already a team in this team name");
                 return;
             }
-            db.Teams.Add(new Team() { TeamName = (txtTeamName.Text).UppercaseFirst(), TeamColors = colors});
+            db.Teams.Add(new Team() { TeamName = teamName, TeamColors = colors});
             db.SaveChanges();
             ListTeams();
             ResetForm();
             WhenMakeChange(EventArgs.Empty);
         }
 
-    
+   
         private void ResetForm()
         {
             txtTeamName.Clear();
