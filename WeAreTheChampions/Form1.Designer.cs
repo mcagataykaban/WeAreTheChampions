@@ -72,7 +72,7 @@ namespace WeAreTheChampions
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(14, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -121,34 +121,35 @@ namespace WeAreTheChampions
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTeams,
             this.tsmiColors,
             this.tsmiPlayers});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(759, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(759, 25);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tsmiTeams
             // 
             this.tsmiTeams.Name = "tsmiTeams";
-            this.tsmiTeams.Size = new System.Drawing.Size(52, 20);
+            this.tsmiTeams.Size = new System.Drawing.Size(59, 21);
             this.tsmiTeams.Text = "Teams";
             this.tsmiTeams.Click += new System.EventHandler(this.tsmiTeams_Click);
             // 
             // tsmiColors
             // 
             this.tsmiColors.Name = "tsmiColors";
-            this.tsmiColors.Size = new System.Drawing.Size(53, 20);
+            this.tsmiColors.Size = new System.Drawing.Size(59, 21);
             this.tsmiColors.Text = "Colors";
             this.tsmiColors.Click += new System.EventHandler(this.tsmiColors_Click);
             // 
             // tsmiPlayers
             // 
             this.tsmiPlayers.Name = "tsmiPlayers";
-            this.tsmiPlayers.Size = new System.Drawing.Size(56, 20);
+            this.tsmiPlayers.Size = new System.Drawing.Size(64, 21);
             this.tsmiPlayers.Text = "Players";
             this.tsmiPlayers.Click += new System.EventHandler(this.tsmiPlayers_Click);
             // 
@@ -156,7 +157,8 @@ namespace WeAreTheChampions
             // 
             this.chkHideCompleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkHideCompleted.AutoSize = true;
-            this.chkHideCompleted.Location = new System.Drawing.Point(498, 32);
+            this.chkHideCompleted.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chkHideCompleted.Location = new System.Drawing.Point(514, 34);
             this.chkHideCompleted.Name = "chkHideCompleted";
             this.chkHideCompleted.Size = new System.Drawing.Size(194, 22);
             this.chkHideCompleted.TabIndex = 6;
@@ -167,25 +169,29 @@ namespace WeAreTheChampions
             // btnStop
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStop.Location = new System.Drawing.Point(699, 13);
+            this.btnStop.BackColor = System.Drawing.Color.Transparent;
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnStop.Location = new System.Drawing.Point(714, 27);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(48, 41);
+            this.btnStop.Size = new System.Drawing.Size(32, 31);
             this.btnStop.TabIndex = 7;
             this.btnStop.Text = "🔇";
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnPlay
             // 
             this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(698, 13);
+            this.btnPlay.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnPlay.Location = new System.Drawing.Point(714, 27);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(48, 41);
+            this.btnPlay.Size = new System.Drawing.Size(32, 31);
             this.btnPlay.TabIndex = 8;
             this.btnPlay.Text = "🔊";
-            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.UseVisualStyleBackColor = false;
             this.btnPlay.Visible = false;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
@@ -193,6 +199,7 @@ namespace WeAreTheChampions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(759, 424);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.btnStop);

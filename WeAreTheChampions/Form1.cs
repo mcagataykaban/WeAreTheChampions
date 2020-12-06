@@ -29,7 +29,7 @@ namespace WeAreTheChampions
             ResultControl();
             ListMatches();
             wplayer.settings.setMode("loop", true);
-            wplayer.URL = "music.mp3";
+            wplayer.URL = "uefa.mp3";
         }
 
         private void ResultControl()

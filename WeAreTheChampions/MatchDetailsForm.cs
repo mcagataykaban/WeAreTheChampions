@@ -66,6 +66,18 @@ namespace WeAreTheChampions
             var team1 = (Team)cboNewTeam1.SelectedItem;
             var team2 = (Team)cboNewTeam2.SelectedItem;
             DateTime? matchDate = dtpNewDate.Value;
+            if (team1.Team1Matches.ToList().Any(x => x.MatchTime.Value.ToShortDateString() == matchDate.Value.ToShortDateString())
+                || team1.Team2Matches.ToList().Any(x => x.MatchTime.Value.ToShortDateString() == matchDate.Value.ToShortDateString()))
+            {
+                MessageBox.Show($"{team1.TeamName} already have match selected date.");
+                return;
+            }
+            if (team2.Team2Matches.ToList().Any(x => x.MatchTime.Value.ToShortDateString() == matchDate.Value.ToShortDateString())
+                || team2.Team2Matches.ToList().Any(x => x.MatchTime.Value.ToShortDateString() == matchDate.Value.ToShortDateString()))
+            {
+                MessageBox.Show($"{team2.TeamName} already have match selected date.");
+                return;
+            }
             db.Matches.Add(new Match()
             {
                 Team1 = team1,
@@ -106,6 +118,11 @@ namespace WeAreTheChampions
             var selectedMatch = FindSelectedMatch();
             cboEditTeam1.SelectedItem = selectedMatch.Team1;
             cboEditTeam2.SelectedItem = selectedMatch.Team2;
+            if (selectedMatch.MatchTime > DateTime.Now)
+            {
+                nudScore1.Enabled = false;
+                nudScore2.Enabled = false;
+            }
             nudScore1.Value = selectedMatch.Score1;
             nudScore2.Value = selectedMatch.Score2;
             dtpEditDate.Value = selectedMatch.MatchTime == null ? DateTime.Now : selectedMatch.MatchTime.Value;
@@ -154,9 +171,10 @@ namespace WeAreTheChampions
             var selectedMatch = FindSelectedMatch();
             selectedMatch.Team1 = (Team)cboEditTeam1.SelectedItem;
             selectedMatch.Team2 = (Team)cboEditTeam2.SelectedItem;
+            selectedMatch.MatchTime = dtpEditDate.Value;
+            
             selectedMatch.Score1 = (int)nudScore1.Value;
             selectedMatch.Score2 = (int)nudScore2.Value;
-            selectedMatch.MatchTime = dtpEditDate.Value;
             db.SaveChanges();
             WhenMakeChange(EventArgs.Empty);
             MessageBox.Show("All changes has been saved.");
